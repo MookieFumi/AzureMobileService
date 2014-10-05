@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html ng-app="myapp">
+
+<head>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <style>
+        * {
+            font-family: 'Open Sans', sans-serif;
+        }
+    </style>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/mobileservices/MobileServices.Web-1.2.2.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular-resource.js"></script>
+    <!--    <script type="text/javascript" src="mobile-service.js"></script>-->
+    <script type="text/javascript" src="azure-service.js"></script>
+    <script type="text/javascript" src="controllers.js"></script>
+    <script type="text/javascript" src="app.js"></script>
+</head>
+
+<body>
+    <div class="container" ng-controller="MyCtrl">
+        <div class="col-md-12">
+            <h1>{{isLoggedIn}}</h1>
+            <a ng-click="login()" class="btn btn-default">Login</a>
+            <a ng-click="logout()" class="btn btn-default">Logout</a> 
+        </div>
+
+        <div class="col-md-4">
+            <ul>
+                <li ng-repeat="task in tasks">
+                    <!--                    <input type="checkbox" ng-model="task.ocultado" ng-click="updateTask(task)">-->
+                    <span>{{ task.nombre }}</span>
+                    <span>{{ task.fundacion }}</span>
+                    <span>{{ task.estadio }}</span>
+                    <span>{{ task.ciudad }}</span>
+                    <!--                <a ng-click="deleteTask(task)">delete</a>-->
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <form role="form" ng-submit="createTask()">
+                <div class="form-group">
+                    <input type="text" ng-model="newTask.nombre" class="form-control" placeholder="team name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" ng-model="newTask.fundacion" class="form-control" placeholder="foundation's year" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" ng-model="newTask.estadio" class="form-control" placeholder="stadium name" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" ng-model="newTask.ciudad" class="form-control" placeholder="city name" required>
+                </div>
+                <button type="submit" class="btn btn-info">Create</button>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
